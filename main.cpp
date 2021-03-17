@@ -5,6 +5,42 @@
 //------------------------------
 
 // Write the assignment code here
+class Real{
+  protected:
+  double num;
+  public:
+  Real(int r):num(r){}
+  Real():Real(0){}
+  double GetReal(){return num;}
+  Real& operator+(double x){
+    num +=x;
+    return *this;
+  }
+};
+class Complex:public Real{
+  protected:
+  double real;
+  double imaginary;
+  public:
+  Complex():imaginary(0),Real(){}
+  Complex(double r, double i):Real(r),imaginary{i}{}
+  double GetImaginary(){return imaginary;}
+  Complex& operator+(double x){
+    real+=x;
+    return *this;
+  }
+};
+class Surreal:public Complex{
+  private:
+  double s1,s2,s3;
+  public:
+  Surreal(double a,double b,double c):Complex(a,b),s3{c}{}
+  double GetSurreal(double x){return s3;}
+  Surreal& operator+(double x){
+    s3+= x;
+    return *this;
+  }
+};
 
 
 //------------------------------
